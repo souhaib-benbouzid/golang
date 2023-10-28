@@ -3,7 +3,7 @@ import TextInput from './form/TextInput';
 
 type Props = {};
 
-const RegistrationForm = (props: Props) => {
+const LoginForm = (props: Props) => {
   const [data, setData] = useState({ name: '', email: '', password: '' });
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -20,13 +20,7 @@ const RegistrationForm = (props: Props) => {
   };
 
   return (
-    <form data-testid='registration-form' onSubmit={handleSubmit}>
-      <TextInput
-        label='full Name'
-        name='name'
-        value={data.name}
-        onChange={handleChange}
-      />
+    <form data-testid='login-form' onSubmit={handleSubmit}>
       <TextInput
         type='email'
         label='email'
@@ -41,9 +35,9 @@ const RegistrationForm = (props: Props) => {
         value={data.password}
         onChange={handleChange}
       />
-      <button type='submit'>Register</button>
+      <button type='submit'>Login</button>
     </form>
   );
 };
 
-export default RegistrationForm;
+export default LoginForm;
