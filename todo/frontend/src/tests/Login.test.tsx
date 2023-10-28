@@ -8,8 +8,8 @@ test('should render Login page', () => {
       <Login />
     </MemoryRouter>
   );
-  const title = screen.getByText('Login');
-  expect(title).toBeInTheDocument();
+  const content = screen.getByTestId('login-form');
+  expect(content).toBeInTheDocument();
 });
 
 test('should render login form', () => {

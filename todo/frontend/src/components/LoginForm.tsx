@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react';
+import Button from './Button';
 import TextInput from './form/TextInput';
 
 type Props = {};
@@ -20,7 +21,7 @@ const LoginForm = (props: Props) => {
   };
 
   return (
-    <form data-testid='login-form' onSubmit={handleSubmit}>
+    <form data-testid='login-form' className='w-4/12' onSubmit={handleSubmit}>
       <TextInput
         type='email'
         label='email'
@@ -35,7 +36,9 @@ const LoginForm = (props: Props) => {
         value={data.password}
         onChange={handleChange}
       />
-      <button type='submit'>Login</button>
+      <div className='mt-6 w-6/12'>
+        <Button type='submit'>Login</Button>
+      </div>
     </form>
   );
 };
