@@ -6,3 +6,9 @@ test('should render registration page', () => {
   const title = screen.getByText('Registration');
   expect(title).toBeInTheDocument();
 });
+
+test('should render registration form', () => {
+  render(<Registration />);
+  const form = screen.getByTestId('registration-form');
+  expect(form).toBeInTheDocument();
+});
