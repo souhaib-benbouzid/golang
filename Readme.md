@@ -358,3 +358,8 @@ func main() {
 }
 
 ```
+
+## Day 03: Methods and Interfaces
+
+- you can declare a method on a type in go.
+-
