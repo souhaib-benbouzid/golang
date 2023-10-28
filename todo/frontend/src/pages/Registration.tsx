@@ -9,7 +9,7 @@ const Registration = () => {
         data-testid='registration-content'
         className='flex flex-col justify-center items-center mb-12 mt-12'
       >
-        <h1 className='text-5xl font-medium'>Registration</h1>
+        <h1 className='text-5xl font-medium mb-6'>Registration</h1>
         <RegistrationForm />
       </main>
     </div>

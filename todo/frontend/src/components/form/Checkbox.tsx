@@ -1,22 +1,22 @@
-import { MouseEventHandler } from 'react';
+import { ChangeEventHandler } from 'react';
 
 type Props = {
-  label: string;
+  label?: string;
   name: string;
-  onClick: MouseEventHandler<HTMLInputElement>;
-  value: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  checked: boolean;
 };
 
-const CheckBox = ({ name, label, onClick, value }: Props) => {
+const CheckBox = ({ name, label, onChange, checked }: Props) => {
   return (
     <div data-testid='textbox'>
       <label htmlFor={name}>{label}</label>
       <input
         type={'checkbox'}
         id={name}
-        value={value}
+        checked={checked}
         name={name}
-        onClick={onClick}
+        onChange={onChange}
       />
     </div>
   );

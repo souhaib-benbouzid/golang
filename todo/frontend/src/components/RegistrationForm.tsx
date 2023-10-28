@@ -23,7 +23,7 @@ const RegistrationForm = (props: Props) => {
   return (
     <form
       data-testid='registration-form'
-      className='w-4/12'
+      className='w-3/12'
       onSubmit={handleSubmit}
     >
       <TextInput
@@ -46,7 +46,7 @@ const RegistrationForm = (props: Props) => {
         value={data.password}
         onChange={handleChange}
       />
-      <div className='mt-6 w-6/12'>
+      <div className='mt-6  m-auto'>
         <Button type='submit'>Register</Button>
       </div>
     </form>

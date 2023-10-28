@@ -21,7 +21,7 @@ const LoginForm = (props: Props) => {
   };
 
   return (
-    <form data-testid='login-form' className='w-4/12' onSubmit={handleSubmit}>
+    <form data-testid='login-form' className='w-3/12' onSubmit={handleSubmit}>
       <TextInput
         type='email'
         label='email'
@@ -36,7 +36,7 @@ const LoginForm = (props: Props) => {
         value={data.password}
         onChange={handleChange}
       />
-      <div className='mt-6 w-6/12'>
+      <div className='mt-6 m-auto'>
         <Button type='submit'>Login</Button>
       </div>
     </form>

@@ -6,27 +6,27 @@ test('should render a checkbox', () => {
   const props = {
     name: 'acceptAgreement',
     label: 'accept agreement',
-    onClick: jest.fn(),
-    value: 'agreement',
+    onChange: jest.fn(),
+    checked: false,
   };
 
   render(<CheckBox {...props} />);
 
   expect(screen.getByText('accept agreement')).toBeInTheDocument();
-  expect(screen.getByDisplayValue('agreement')).not.toBeChecked();
+  expect(screen.getByRole('checkbox')).not.toBeChecked();
 });
 
-test('should call onClick', () => {
+test('should call onChange', () => {
   const props = {
     name: 'acceptAgreement',
     label: 'accept agreement',
-    onClick: jest.fn(),
-    value: 'agreement',
+    onChange: jest.fn(),
+    checked: false,
   };
 
   render(<CheckBox {...props} />);
   const checkbox = screen.getByRole('checkbox');
   userEvent.click(checkbox);
 
-  expect(props.onClick).toBeCalled();
+  expect(props.onChange).toBeCalled();
 });
