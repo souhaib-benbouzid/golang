@@ -125,12 +125,15 @@ a naked return will return the named return values in the declaration. sqrtX, sq
 
 ### Loops
 
-go has one loop. `for` loop; init statement optional,condition statement required, post statement optional
+- go has one loop. `for` loop; init statement optional,condition statement required, post statement optional
+- `range` allows simplify looping over slices
 
 ```go
 package main
 
 import "fmt"
+
+var names = []string {"souhaib", "ali", "zaki", "aboubakr"}
 
 func main() {
     sum := 0
@@ -143,6 +146,11 @@ func main() {
         sum += sum
     }
     fmt.Println(sum)
+
+    for index, name := range names {
+        fmt.Println(index, name)
+    }
+
 }
 ```
 
@@ -262,20 +270,38 @@ func main() {
 
 ### Arrays
 
-- in go [n]T denotes an array of n values of type T.
+- in go `[n]T` denotes an array of `n` values of type `T`.
 - array size is fixed an cannot be resized.
+- to make a dynamic array you use built in make function
+- `make([]int, 5)` creates a zero based array and returns a slice that refers to it
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    s := make(int[], 5)
+    s2 := make(int[],0, 5)
+    // s2 := make(type,length, capcity)
+    fmt.Println(len(slice), cap(slice))
+}
+```
 
 ### Slices
 
 - slices are dynamically sized array
-- in go []T denotes a slice of elements of type T
-- you can create a slice with array[low: high]
+- in go `[]T` denotes a slice of elements of type `T`
+- you can create a slice with `array[low: high]`
 - slices don't hold data
 - slices points to the underling array
 - modification on a slice will change the underling array
 - slices can be referenced by it low (0) or high (length of the slice) bond only
-- len(slice) length of slice which is the number of elements
-- cap(slice) capacity of slice which is the number of elements in the underlying array, counting from the first element in the slice.
+- `len(slice)` length of slice which is the number of elements
+- `cap(slice)` capacity of slice which is the number of elements in the underlying array, counting from the first element in the slice.
+- a zero value for slice is `nil`
+- A nil slice has a length and capacity of 0 and has no underlying array.
+- `append` append an element to a slice and increase its length and capacity accordingly
 
 ```go
 package main
@@ -284,7 +310,6 @@ import "fmt"
 
 func main() {
     primes := [6]int{2, 3, 5, 7, 11, 13} // <-- array of 6 elements
-
     var s []int = primes[1:5] // <-- slice of 4 elements
     fmt.Println(s)
 
@@ -298,4 +323,38 @@ func main() {
     fmt.Println(array,slice, [2]int{1,2} /** <-- arrayLiteral */,[]int{1,2} /** >-- sliceLiteral */ )
     fmt.Println(len(slice), cap(slice))
 }
+```
+
+### Maps
+
+- maps in go are a collection of key value pairs
+- create a map with `make(map[key]value)`
+- maps are bracket indexed `m[key]`
+- assign a value to a key with `m[key] = value`
+- remove key from a map m with `delete(m, key)`
+- test key value present with `elem, ok = m[key]` where `ok` is boolean and `elem` is either the value or zero value
+
+```go
+package main
+
+import (
+ "golang.org/x/tour/wc"
+ "strings"
+)
+
+func WordCount(s string) map[string]int {
+ words := strings.Fields(s)
+ wordmap := make(map[string]int)
+
+ for i := 0; i < len(words); i++ {
+  wordmap[words[i]] = wordmap[words[i]] + 1
+ }
+
+ return wordmap
+}
+
+func main() {
+ wc.Test(WordCount)
+}
+
 ```
